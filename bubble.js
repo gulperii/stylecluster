@@ -139,9 +139,6 @@
             .on('click', function (d) {
                 d3.select("h1").html("Cluster id " + d.cluster_id);
                 d3.select("h2").html("Channels \n" + d.channel_id);
-                                d3.select("h2").html("Channels \n" + d.img_path);
-
-
                 d3.select(this).attr("r", 200);
             })
 
