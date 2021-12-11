@@ -18,17 +18,6 @@
 
     var defs = svg.append("defs");
 //BURASI gereksız
-    defs.append("pattern")
-        .attr("id", "jon-snow")
-        .attr("height", "100%")
-        .attr("width", "100%")
-        .attr("patternContentUnits", "objectBoundingBox")
-        .append("image")
-        .attr("height", 1)
-        .attr("width", 1)
-        .attr("preserveAspectRatio", "none")
-        .attr("xmlns:xlink", "http://www.w3.org/1999/xlink")
-        .attr("xlink:href", "jon.png");
 
     var radiusScale = d3.scaleSqrt().domain([1, 100]).range([10, 80])
 
@@ -78,7 +67,7 @@
                 // jon-snow
                 // Madonna
                 // the-eagles
-                return d.cluster_id
+                return d.id
             })
             .attr("height", "100%")
             .attr("width", "100%")
@@ -88,8 +77,6 @@
             .attr("width", 1)
             .attr("preserveAspectRatio", "none")
             // set the stroke width
-
-
             .attr("xmlns:xlink", "http://www.w3.org/1999/xlink")
             .attr("xlink:href", function (d) {
                 return d.img_path
@@ -110,7 +97,7 @@
                 // "url(#Madonna)"
                 // "url(#nicki-minaj)"
                 //name wisely
-                return "url(#" + d.cluster_id + ")"
+                return "url(#" + d.id+ ")"
             })
             .style("stroke", function (d) {
                 if (d.layer === "3") {
@@ -152,6 +139,8 @@
             .on('click', function (d) {
                 d3.select("h1").html("Cluster id " + d.cluster_id);
                 d3.select("h2").html("Channels \n" + d.channel_id);
+                                d3.select("h2").html("Channels \n" + d.img_path);
+
 
                 d3.select(this).attr("r", 200);
             })
